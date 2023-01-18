@@ -1,0 +1,24 @@
+.question {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 400px;
+  height: 50px;
+  align-items: center;
+  justify-items: center;
+  padding: 10px;
+}
+
+.question--header {
+  font-weight: bold;
+  grid-column: span 4;
+  justify-self: flex-start;
+}
+
+.question--button {
+  border-radius: 8px;
+  height: 20px;
+  width: 80px;
+  border: 2px solid rgba(77, 91, 158, 1);
+  background-color: transparent;
+}
