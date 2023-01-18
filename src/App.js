@@ -27,7 +27,6 @@ function App() {
     return array;
   }
 
-
   const questionElements = questions.map(element => {
     let answers = 
     [element.correct_answer, 
