@@ -1,4 +1,4 @@
-{
+const data = {
     "response_code": 0,
     "results": [
       {
