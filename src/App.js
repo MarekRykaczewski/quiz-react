@@ -3,11 +3,25 @@ import logo from './logo.svg';
 import './App.css';
 import Question from './components/Question';
 import data from "./data.js";
+import { nanoid } from 'nanoid'
 
 
 function App() {
 
-  const [questions, setQuestions] = React.useState(data.results)
+  const [questions, setQuestions] = React.useState(data.results.map(result =>{
+    return (
+      {...result,
+        selected: '',
+        id: nanoid()
+      }
+    )
+  }))
+
+  function chooseAnswer(answer) {
+    setQuestions(oldQuestions => oldQuestions.map(question => {
+      return ({...oldQuestions, selected: answer})
+    }))
+  }
 
   function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
@@ -38,11 +52,13 @@ function App() {
 
     return (
       <Question 
+      key={element.id}
       text={element.question}
       firstOption={answers[0]}
       secondOption={answers[1]}
       thirdOption={answers[2]}
       fourthOption={answers[3]}
+      handleClick={() => chooseAnswer("test")}
       />
     )
   }
