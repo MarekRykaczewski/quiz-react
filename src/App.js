@@ -10,48 +10,63 @@ function App() {
 
   const [questions, setQuestions] = React.useState(data.results.map(result =>{
     return (
-      {...result,
-        selected: '',
+      { question: result.question,
+        options: [...result.incorrect_answers, result.correct_answer],
+        answer: result.correct_answer,
+        selected: "",
         id: nanoid()
       }
     )
   }))
 
+  React.useEffect(() => {
+    setQuestions(oldQuestions => oldQuestions.map(question => {
+      return (
+        {
+          ...question,
+          options: shuffle([...question.options])
+        }
+      )
+    }))
+}, [])
+
   function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
-  
+    
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
-  
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-  
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
+    
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+    
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
     }
-  
+    
     return array;
+    }
+
+
+
+  function selectAnswer(answer) {
+    console.log(questions)
+    setQuestions(oldQuestions => oldQuestions.map(question => {
+      return ({...question, selected: answer})
+    }))
   }
 
   const questionElements = questions.map(element => {
-    let answers = 
-    [element.correct_answer, 
-      element.incorrect_answers[0],
-      element.incorrect_answers[1], 
-      element.incorrect_answers[2]]
-
-    shuffle(answers)
-
     return (
       <Question 
       key={element.id}
       text={element.question}
-      firstOption={answers[0]}
-      secondOption={answers[1]}
-      thirdOption={answers[2]}
-      fourthOption={answers[3]}
+      firstOption={element.options[0]}
+      secondOption={element.options[1]}
+      thirdOption={element.options[2]}
+      fourthOption={element.options[3]}
+      pickOption={selectAnswer}
       />
     )
   }
