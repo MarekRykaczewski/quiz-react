@@ -17,12 +17,6 @@ function App() {
     )
   }))
 
-  function chooseAnswer(answer) {
-    setQuestions(oldQuestions => oldQuestions.map(question => {
-      return ({...oldQuestions, selected: answer})
-    }))
-  }
-
   function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
   
@@ -58,7 +52,6 @@ function App() {
       secondOption={answers[1]}
       thirdOption={answers[2]}
       fourthOption={answers[3]}
-      handleClick={() => chooseAnswer("test")}
       />
     )
   }
