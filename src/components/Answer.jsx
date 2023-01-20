@@ -3,8 +3,8 @@ import React from "react";
 export default function Answer(props) {
 
     const styles = {
-        backgroundColor: props.text === props.selected ? "rgba(77, 91, 158, 1)" : "",
-        color: props.text === props.selected ? "white" : ""
+        backgroundColor: props.text === props.selected && "rgba(77, 91, 158, 1)",
+        color: props.text === props.selected && "white"
 
     }
 
