@@ -50,10 +50,15 @@ function App() {
 
 
 
-  function selectAnswer(answer) {
+  function selectAnswer(id, answer) {
     console.log(questions)
     setQuestions(oldQuestions => oldQuestions.map(question => {
-      return ({...question, selected: answer})
+      if (question.id === id) {
+        return ({...question, selected: answer})
+      } else {
+        return question
+      }
+
     }))
   }
 
@@ -61,12 +66,14 @@ function App() {
     return (
       <Question 
       key={element.id}
+      id={element.id}
       text={element.question}
       firstOption={element.options[0]}
       secondOption={element.options[1]}
       thirdOption={element.options[2]}
       fourthOption={element.options[3]}
       pickOption={selectAnswer}
+      selected={element.selected}
       />
     )
   }
