@@ -83,6 +83,7 @@ function App() {
   return (
     <div className="App">
       {questionElements}
+      <button className='check--button'> Check answers </button>
     </div>
   );
 }
