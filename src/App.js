@@ -64,6 +64,16 @@ function App() {
     }))
   }
 
+  function checkAnswers() {
+    const counter = 0
+    for (let i = 0; i < questions.length; i++) {
+      if (questions[i].selected === questions[i].answer) {
+        counter++
+      }
+    }
+    return counter
+  }
+
   const questionElements = questions.map(element => {
     return (
       <Question 
