@@ -8,6 +8,8 @@ import { nanoid } from 'nanoid'
 
 function App() {
 
+  const [quizStatus, setQuizStatus] = React.useState(false)
+
   const [questions, setQuestions] = React.useState(data.results.map(result =>{
     return (
       { question: result.question,
