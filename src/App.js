@@ -8,7 +8,7 @@ import { nanoid } from 'nanoid'
 
 function App() {
 
-  const [quizStatus, setQuizStatus] = React.useState(false)
+  const [quizStatus, setQuizStatus] = React.useState({status: false, correct: 0})
 
   const [questions, setQuestions] = React.useState(data.results.map(result =>{
     return (
@@ -65,14 +65,13 @@ function App() {
   }
 
   function checkAnswers() {
-    const counter = 0
+    let counter = 0
     for (let i = 0; i < questions.length; i++) {
       if (questions[i].selected === questions[i].answer) {
         counter++
       }
     }
-    setQuizStatus(true)
-    return counter
+    setQuizStatus({status: true, correct: counter})
   }
 
   const questionElements = questions.map(element => {
@@ -96,7 +95,8 @@ function App() {
   return (
     <div className="App">
       {questionElements}
-      <button className='check--button'> Check answers </button>
+      <button onClick={checkAnswers} className='check--button'> Check answers </button>
+      {quizStatus.status && <p> You got {quizStatus.correct} out of 5!</p>}
     </div>
   );
 }
