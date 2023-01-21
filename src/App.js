@@ -71,6 +71,7 @@ function App() {
         counter++
       }
     }
+    setQuizStatus(true)
     return counter
   }
 
