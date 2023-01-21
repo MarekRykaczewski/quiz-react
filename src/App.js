@@ -2,7 +2,6 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Question from './components/Question';
-// import data from "./data.js";
 import { nanoid } from 'nanoid'
 
 
