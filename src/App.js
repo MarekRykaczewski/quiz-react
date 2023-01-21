@@ -2,24 +2,30 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Question from './components/Question';
-import data from "./data.js";
+// import data from "./data.js";
 import { nanoid } from 'nanoid'
 
 
 function App() {
 
+  React.useEffect(() => {
+    fetch("https://opentdb.com/api.php?amount=5&difficulty=easy")
+    .then(res => res.json())
+    .then(data => setQuestions(data.results.map(result =>{
+      return (
+        { question: result.question,
+          options: [...result.incorrect_answers, result.correct_answer],
+          answer: result.correct_answer,
+          selected: "",
+          id: nanoid()
+        }
+      )
+    })))
+}, [])  
+
   const [quizStatus, setQuizStatus] = React.useState({status: false, correct: 0})
 
-  const [questions, setQuestions] = React.useState(data.results.map(result =>{
-    return (
-      { question: result.question,
-        options: [...result.incorrect_answers, result.correct_answer],
-        answer: result.correct_answer,
-        selected: "",
-        id: nanoid()
-      }
-    )
-  }))
+  const [questions, setQuestions] = React.useState([])
 
   React.useEffect(() => {
     setQuestions(oldQuestions => oldQuestions.map(question => {
