@@ -9,6 +9,11 @@ export default function Answer(props) {
     }
 
     return (
-            <button style={styles} className="question--button" onClick={props.pickOption}> {props.text} </button>
+            <button 
+            style={styles} 
+            className="question--button" 
+            onClick={props.pickOption}> 
+            {props.text} 
+            </button>
     )
 }
