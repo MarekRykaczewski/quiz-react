@@ -91,12 +91,7 @@ function App() {
       pickOption={selectAnswer}
       selected={element.selected}
       quizStatus={quizStatus}
-      correctAnswer={element.answer}
-      class={quizStatus.status ? 
-        element.selected === element.answer ? 
-        "correct" 
-        : "incorrect"
-        : "normal"}
+      answer={element.answer}
       />
     )
   }
