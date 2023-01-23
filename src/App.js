@@ -58,9 +58,8 @@ function App() {
 
 
   function selectAnswer(id, answer) {
-    console.log(questions)
     setQuestions(oldQuestions => oldQuestions.map(question => {
-      if (question.id === id) {
+      if (question.id === id & quizStatus.status === false) {
         return ({...question, selected: answer})
       } else {
         return question
