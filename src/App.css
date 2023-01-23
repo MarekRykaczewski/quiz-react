@@ -4,6 +4,7 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .App {
@@ -51,4 +52,22 @@ body {
   color: white;
   font-size: 12px;
   font-weight: bold;
+}
+
+.question--button.normal {  
+  border: 2px solid rgba(77, 91, 158, 1);
+  background-color: white;
+}
+
+.question--button.correct {
+  border: none;
+  background-color: rgb(88, 189, 88);
+  color: rgb(23, 74, 23);
+  font-weight: 900;
+}
+
+.question--button.incorrect {
+  border: none;
+  background-color: rgb(226, 80, 80);
+  color: rgb(108, 16, 16);
 }
